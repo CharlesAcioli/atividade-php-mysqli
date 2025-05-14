@@ -6,13 +6,19 @@ $db = "escola";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
-$table = "alunos";
-$nome = "Charles";
-$email = "charlesemail@email.com";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-$q = "INSERT INTO $table (`nome`, `email`) VALUES (?,?)";
+    $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    
+    $stmt = $conn->prepare("INSERT INTO alunos (`nome`, `email`) VALUES (?, ?)");
+    $stmt->bind_param("ss", $nome, $email);
+    $stmt->execute();
+    $stmt->close();
+
+    echo "Aluno cadastrado com sucesso!";
+}
 
 
-$conn->query($q);
 $conn->close();
 ?>
