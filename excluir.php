@@ -1,8 +1,8 @@
 <?php
 include_once('conexao.php');
 
-if(isset($_GET['excluir'])){
-    $id = $_GET['excluir'];
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
 
     $stmt = $conn->prepare("DELETE FROM alunos WHERE id = ?");
     $stmt->bind_param("i", $id);
