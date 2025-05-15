@@ -27,7 +27,7 @@ $result = $conn->query("SELECT * FROM alunos");
             <th>Email</th>
             <th>Ação</th>
         </tr>
-        <?php while ($aluno = $result->fetch_assoc())?>
+        <?php while ($aluno = $result->fetch_assoc()) {?>
             <tr>
                 <td><?=$aluno['id'] ?></td>
                 <td><?=$aluno['nome'] ?></td>
@@ -36,7 +36,7 @@ $result = $conn->query("SELECT * FROM alunos");
                     <a href="excluir.php?id=<?= $aluno['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                 </td>
             </tr>
-        <?php endwhile; ?>
+        <?php }?>
     </table>
 </body>
 </html>
